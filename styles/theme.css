@@ -1,0 +1,153 @@
+/* NEON//WAVE — full Spotify Web Player visual skin */
+:root {
+  --nw-bg: #070914;
+  --nw-bg-2: #0b1020;
+  --nw-panel: rgba(15, 21, 39, .88);
+  --nw-panel-2: rgba(19, 27, 48, .92);
+  --nw-line: rgba(105, 231, 255, .16);
+  --nw-cyan: #55f3ff;
+  --nw-violet: #9b7bff;
+  --nw-pink: #ff4fd8;
+  --nw-text: #edf7ff;
+  --nw-muted: #91a2bb;
+  --nw-glow: 0 0 22px rgba(85,243,255,.18);
+  color-scheme: dark;
+}
+html, body, #main, #main-view, .Root, .Root__top-container {
+  background: var(--nw-bg) !important;
+  color: var(--nw-text) !important;
+}
+body {
+  background-image:
+    radial-gradient(ellipse at 12% 0%, rgba(77, 227, 255, .10), transparent 34%),
+    radial-gradient(ellipse at 88% 12%, rgba(173, 82, 255, .11), transparent 32%),
+    linear-gradient(145deg, #070914 0%, #0a0e1c 52%, #090817 100%) !important;
+  background-attachment: fixed !important;
+}
+#main, #main-view, [data-testid="root"] { isolation: isolate; }
+nav, aside, [data-testid="left-sidebar"], .main-view-container__scroll-node {
+  scrollbar-color: rgba(85,243,255,.35) transparent;
+}
+[data-testid="left-sidebar"], .Root__nav-bar, nav[aria-label] {
+  background: linear-gradient(180deg, rgba(13,19,36,.96), rgba(8,12,25,.96)) !important;
+  border: 1px solid var(--nw-line) !important;
+  border-radius: 18px !important;
+  box-shadow: inset 0 1px rgba(255,255,255,.035), 8px 0 34px rgba(0,0,0,.22) !important;
+}
+main, [data-testid="main-view"], .main-view-container {
+  background: transparent !important;
+}
+header, [data-testid="topbar"], .main-topBar-container, .Root__top-bar {
+  background: rgba(8,12,25,.78) !important;
+  backdrop-filter: blur(22px) saturate(145%) !important;
+  border-bottom: 1px solid var(--nw-line) !important;
+}
+h1,h2,h3,[data-encore-id="text"] {
+  color: var(--nw-text);
+}
+h1, h2 { letter-spacing: -.035em; }
+a, button, [role="button"] { transition: color .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+button, [role="button"], [data-testid="control-button"] {
+  border-radius: 999px;
+}
+button:hover, [role="button"]:hover, [data-testid="control-button"]:hover {
+  filter: brightness(1.14);
+}
+button:focus-visible, [role="button"]:focus-visible, a:focus-visible {
+  outline: 2px solid var(--nw-cyan) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px rgba(85,243,255,.12) !important;
+}
+a { color: inherit; }
+a:hover { color: var(--nw-cyan) !important; }
+input, textarea, [role="combobox"], [data-testid="search-input"] {
+  background: rgba(7,12,26,.9) !important;
+  color: var(--nw-text) !important;
+  border: 1px solid rgba(85,243,255,.23) !important;
+  border-radius: 999px !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.015);
+}
+input:focus, textarea:focus, [role="combobox"]:focus-within {
+  border-color: var(--nw-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(85,243,255,.12), 0 0 22px rgba(85,243,255,.10) !important;
+}
+[data-testid="card"], .Card, .Root__album-card, [data-testid="playlist-card"], [data-testid="album-card"] {
+  background: linear-gradient(155deg, rgba(22,31,54,.88), rgba(11,16,31,.94)) !important;
+  border: 1px solid rgba(133,148,190,.12) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 34px rgba(0,0,0,.18) !important;
+}
+[data-testid="card"]:hover, .Card:hover, [data-testid="playlist-card"]:hover, [data-testid="album-card"]:hover {
+  background: linear-gradient(155deg, rgba(28,42,70,.96), rgba(15,21,40,.98)) !important;
+  border-color: rgba(85,243,255,.38) !important;
+  box-shadow: 0 0 0 1px rgba(85,243,255,.10), 0 16px 42px rgba(0,0,0,.32), var(--nw-glow) !important;
+  transform: translateY(-2px);
+}
+[data-testid="tracklist"], [role="grid"], [role="table"] { color: var(--nw-text); }
+[data-testid="tracklist-row"], [role="row"], .tracklist-row {
+  border-radius: 8px !important;
+}
+[data-testid="tracklist-row"]:hover, [role="row"]:hover, .tracklist-row:hover {
+  background: linear-gradient(90deg, rgba(85,243,255,.10), rgba(155,123,255,.07)) !important;
+}
+[data-testid="tracklist-row"][aria-selected="true"], [role="row"][aria-selected="true"] {
+  background: rgba(85,243,255,.12) !important;
+}
+[aria-label="Play"], [data-testid="play-button"], .Button--play {
+  color: #06111a !important;
+  background: linear-gradient(135deg, var(--nw-cyan), #a4fbff) !important;
+  box-shadow: 0 0 18px rgba(85,243,255,.28) !important;
+}
+[aria-label="Play"]:hover, [data-testid="play-button"]:hover {
+  box-shadow: 0 0 28px rgba(85,243,255,.5) !important;
+  transform: scale(1.04);
+}
+footer, [data-testid="now-playing-bar"], .Root__now-playing-bar, .player-controls {
+  background: linear-gradient(90deg, rgba(10,15,30,.98), rgba(16,13,35,.98)) !important;
+  border-top: 1px solid rgba(85,243,255,.22) !important;
+  box-shadow: 0 -12px 36px rgba(0,0,0,.28), 0 -1px 18px rgba(85,243,255,.06) !important;
+  backdrop-filter: blur(24px) !important;
+}
+progress, [role="progressbar"] {
+  accent-color: var(--nw-cyan);
+}
+progress::-webkit-progress-value { background: linear-gradient(90deg,var(--nw-cyan),var(--nw-violet),var(--nw-pink)); }
+[role="slider"] { color: var(--nw-cyan) !important; }
+[role="dialog"], [data-testid*="popover"], [data-testid*="menu"], [role="menu"], [role="listbox"] {
+  background: rgba(13,19,37,.98) !important;
+  color: var(--nw-text) !important;
+  border: 1px solid rgba(85,243,255,.24) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 18px 60px rgba(0,0,0,.5), 0 0 24px rgba(85,243,255,.08) !important;
+  backdrop-filter: blur(22px) !important;
+}
+[role="menuitem"]:hover, [role="option"]:hover, [data-testid*="menu"] button:hover {
+  background: rgba(85,243,255,.12) !important;
+}
+[data-testid="context-menu"], .encore-dark-theme { --background-base: #0d1325; --text-base: #edf7ff; }
+hr, [role="separator"] { border-color: var(--nw-line) !important; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--nw-cyan),var(--nw-violet)); border: 2px solid transparent; background-clip: padding-box; border-radius: 99px; }
+::-webkit-scrollbar-track { background: transparent; }
+::selection { background: rgba(85,243,255,.28); color: white; }
+/* Spotify's Encore tokens — used by newer UI surfaces */
+.encore-dark-theme, .encore-base-set {
+  --background-base: #0a0f20 !important;
+  --background-highlight: #18243d !important;
+  --background-press: #202e4b !important;
+  --background-elevated-base: #111a30 !important;
+  --background-elevated-highlight: #1b2945 !important;
+  --text-base: #edf7ff !important;
+  --text-subdued: #91a2bb !important;
+  --essential-base: #55f3ff !important;
+  --essential-subdued: #9b7bff !important;
+  --decorative-base: #ff4fd8 !important;
+  --border-subdued: rgba(85,243,255,.16) !important;
+}
+@media (max-width: 900px) {
+  [data-testid="left-sidebar"] { border-radius: 12px !important; }
+  [data-testid="card"] { border-radius: 12px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
+}
