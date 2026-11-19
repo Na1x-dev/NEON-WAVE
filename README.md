@@ -1,15 +1,15 @@
 # NEON//WAVE
 
-A neon-futurist / cyberpunk visual theme for Spotify Web Player.
+A Cyberpunk 2077-inspired visual theme for Spotify Web Player.
 
 > This is an independent community theme. It does not modify Spotify's backend or replace its playback logic. Spotify's DOM changes over time, so selectors may need maintenance.
 
 ## Features
 
 - Full-page dark glass / neon treatment for Spotify navigation, library, top bar, search, cards, track lists, dialogs, menus, and the bottom playback bar.
-- Cyan / violet / magenta accent system with restrained glow, gradients, and hover states.
+- Cyberpunk 2077-inspired cyan / violet / magenta / red accents, angular panels, and restrained neon glow.\n- Full-page blurred background derived from the currently playing track artwork.
 - Responsive layout adjustments and reduced-motion support.
-- Optional live spectrum visualizer driven by Chrome tab audio capture (FFT via Web Audio AnalyserNode).
+- Optional live spectrum visualizer driven by Chrome tab audio capture (FFT via Web Audio AnalyserNode), throttled to about 24 updates per second.\n- Performance-focused rendering: no continuous visualizer loop while disabled, a scoped observer for player artwork, and reduced blur / transition effects.
 
 ## Install (unpacked)
 
