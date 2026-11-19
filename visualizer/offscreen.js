@@ -14,33 +14,45 @@ async function stop() {
   try { source?.disconnect(); } catch {}
   try { analyser?.disconnect(); } catch {}
   if (stream) stream.getTracks().forEach(track => track.stop());
-  stream = null; source = null; analyser = null;
+  stream = null;
+  source = null;
+  analyser = null;
+  frequencyData = null;
   if (audioContext && audioContext.state !== "closed") await audioContext.close();
   audioContext = null;
   const tabId = activeTabId;
   activeTabId = null;
+  lastSendAt = 0;
   if (tabId !== null) chrome.runtime.sendMessage({type:"NW_OFFSCREEN_STOPPED",tabId}).catch(()=>{});
 }
+
 function analyse() {
-  if (!analyser || !activeTabId) return;
-  const data = new Uint8Array(analyser.frequencyBinCount);
-  analyser.getByteFrequencyData(data);
-  const bins = [];
-  const count = 64;
-  for (let i=0;i<count;i++) {
-    const start = Math.floor(Math.pow(i/count,2)*data.length);
-    const end = Math.max(start+1,Math.floor(Math.pow((i+1)/count,2)*data.length));
-    let peak = 0;
-    for (let j=start;j<Math.min(end,data.length);j++) peak = Math.max(peak,data[j]);
-    bins.push(peak);
+  if (!analyser || activeTabId === null) return;
+  const now = performance.now();
+  if (now - lastSendAt >= 42) {
+    lastSendAt = now;
+    if (!frequencyData || frequencyData.length !== analyser.frequencyBinCount) {
+      frequencyData = new Uint8Array(analyser.frequencyBinCount);
+    }
+    analyser.getByteFrequencyData(frequencyData);
+    const bins = [];
+    const count = 40;
+    for (let i = 0; i < count; i++) {
+      const start = Math.floor(Math.pow(i / count, 2) * frequencyData.length);
+      const end = Math.max(start + 1, Math.floor(Math.pow((i + 1) / count, 2) * frequencyData.length));
+      let peak = 0;
+      for (let j = start; j < Math.min(end, frequencyData.length); j++) peak = Math.max(peak, frequencyData[j]);
+      bins.push(peak);
+    }
+    chrome.runtime.sendMessage({type:"NW_FFT_FROM_OFFSCREEN",tabId:activeTabId,bins}).catch(()=>{});
   }
-  chrome.runtime.sendMessage({type:"NW_FFT_FROM_OFFSCREEN",tabId:activeTabId,bins}).catch(()=>{});
   raf = requestAnimationFrame(analyse);
 }
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message?.target !== "offscreen") return;
   if (message.type === "NW_OFFSCREEN_STOP") {
-    stop().then(()=>sendResponse({ok:true}),()=>sendResponse({ok:false}));
+    stop().then(() => sendResponse({ok:true}), () => sendResponse({ok:false}));
     return true;
   }
   if (message.type === "NW_OFFSCREEN_START") {
