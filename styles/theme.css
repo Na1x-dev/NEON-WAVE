@@ -265,3 +265,9 @@ a, button, [role="button"], [data-testid="control-button"],
 [data-testid="card"]:hover, .Card:hover, [data-testid="playlist-card"]:hover, [data-testid="album-card"]:hover {
   transform: none !important;
 }
+
+/* Keep Spotify's outer application shells transparent so the live artwork is visible. */
+.Root, .Root__top-container, .Root__main-view, .main-view-container,
+.main-view-container__scroll-node, [data-testid="main-view"] {
+  background: transparent !important;
+}
