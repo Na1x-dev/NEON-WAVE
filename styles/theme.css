@@ -1,273 +1,170 @@
-/* NEON//WAVE — full Spotify Web Player visual skin */
+/* NEON//WAVE 2.0 — Liquid Glass
+   Presentation-only skin. Intentionally leaves Spotify layout and controls intact. */
 :root {
-  --nw-bg: #070914;
-  --nw-bg-2: #0b1020;
-  --nw-panel: rgba(15, 21, 39, .88);
-  --nw-panel-2: rgba(19, 27, 48, .92);
-  --nw-line: rgba(105, 231, 255, .16);
-  --nw-cyan: #55f3ff;
-  --nw-violet: #9b7bff;
-  --nw-pink: #ff4fd8;
-  --nw-text: #edf7ff;
-  --nw-muted: #91a2bb;
-  --nw-glow: 0 0 22px rgba(85,243,255,.18);
   color-scheme: dark;
-}
-html, body, #main, #main-view, .Root, .Root__top-container {
-  background: var(--nw-bg) !important;
-  color: var(--nw-text) !important;
-}
-body {
-  background-image:
-    radial-gradient(ellipse at 12% 0%, rgba(77, 227, 255, .10), transparent 34%),
-    radial-gradient(ellipse at 88% 12%, rgba(173, 82, 255, .11), transparent 32%),
-    linear-gradient(145deg, #070914 0%, #0a0e1c 52%, #090817 100%) !important;
-  background-attachment: fixed !important;
-}
-#main, #main-view, [data-testid="root"] { isolation: isolate; }
-nav, aside, [data-testid="left-sidebar"], .main-view-container__scroll-node {
-  scrollbar-color: rgba(85,243,255,.35) transparent;
-}
-[data-testid="left-sidebar"], .Root__nav-bar, nav[aria-label] {
-  background: linear-gradient(180deg, rgba(13,19,36,.96), rgba(8,12,25,.96)) !important;
-  border: 1px solid var(--nw-line) !important;
-  border-radius: 18px !important;
-  box-shadow: inset 0 1px rgba(255,255,255,.035), 8px 0 34px rgba(0,0,0,.22) !important;
-}
-main, [data-testid="main-view"], .main-view-container {
-  background: transparent !important;
-}
-header, [data-testid="topbar"], .main-topBar-container, .Root__top-bar {
-  background: rgba(8,12,25,.78) !important;
-  backdrop-filter: blur(22px) saturate(145%) !important;
-  border-bottom: 1px solid var(--nw-line) !important;
-}
-h1,h2,h3,[data-encore-id="text"] {
-  color: var(--nw-text);
-}
-h1, h2 { letter-spacing: -.035em; }
-a, button, [role="button"] { transition: color .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
-button, [role="button"], [data-testid="control-button"] {
-  border-radius: 999px;
-}
-button:hover, [role="button"]:hover, [data-testid="control-button"]:hover {
-  filter: brightness(1.14);
-}
-button:focus-visible, [role="button"]:focus-visible, a:focus-visible {
-  outline: 2px solid var(--nw-cyan) !important;
-  outline-offset: 3px !important;
-  box-shadow: 0 0 0 5px rgba(85,243,255,.12) !important;
-}
-a { color: inherit; }
-a:hover { color: var(--nw-cyan) !important; }
-input, textarea, [role="combobox"], [data-testid="search-input"] {
-  background: rgba(7,12,26,.9) !important;
-  color: var(--nw-text) !important;
-  border: 1px solid rgba(85,243,255,.23) !important;
-  border-radius: 999px !important;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.015);
-}
-input:focus, textarea:focus, [role="combobox"]:focus-within {
-  border-color: var(--nw-cyan) !important;
-  box-shadow: 0 0 0 3px rgba(85,243,255,.12), 0 0 22px rgba(85,243,255,.10) !important;
-}
-[data-testid="card"], .Card, .Root__album-card, [data-testid="playlist-card"], [data-testid="album-card"] {
-  background: linear-gradient(155deg, rgba(22,31,54,.88), rgba(11,16,31,.94)) !important;
-  border: 1px solid rgba(133,148,190,.12) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 12px 34px rgba(0,0,0,.18) !important;
-}
-[data-testid="card"]:hover, .Card:hover, [data-testid="playlist-card"]:hover, [data-testid="album-card"]:hover {
-  background: linear-gradient(155deg, rgba(28,42,70,.96), rgba(15,21,40,.98)) !important;
-  border-color: rgba(85,243,255,.38) !important;
-  box-shadow: 0 0 0 1px rgba(85,243,255,.10), 0 16px 42px rgba(0,0,0,.32), var(--nw-glow) !important;
-  transform: translateY(-2px);
-}
-[data-testid="tracklist"], [role="grid"], [role="table"] { color: var(--nw-text); }
-[data-testid="tracklist-row"], [role="row"], .tracklist-row {
-  border-radius: 8px !important;
-}
-[data-testid="tracklist-row"]:hover, [role="row"]:hover, .tracklist-row:hover {
-  background: linear-gradient(90deg, rgba(85,243,255,.10), rgba(155,123,255,.07)) !important;
-}
-[data-testid="tracklist-row"][aria-selected="true"], [role="row"][aria-selected="true"] {
-  background: rgba(85,243,255,.12) !important;
-}
-[aria-label="Play"], [data-testid="play-button"], .Button--play {
-  color: #06111a !important;
-  background: linear-gradient(135deg, var(--nw-cyan), #a4fbff) !important;
-  box-shadow: 0 0 18px rgba(85,243,255,.28) !important;
-}
-[aria-label="Play"]:hover, [data-testid="play-button"]:hover {
-  box-shadow: 0 0 28px rgba(85,243,255,.5) !important;
-  transform: scale(1.04);
-}
-footer, [data-testid="now-playing-bar"], .Root__now-playing-bar, .player-controls {
-  background: linear-gradient(90deg, rgba(10,15,30,.98), rgba(16,13,35,.98)) !important;
-  border-top: 1px solid rgba(85,243,255,.22) !important;
-  box-shadow: 0 -12px 36px rgba(0,0,0,.28), 0 -1px 18px rgba(85,243,255,.06) !important;
-  backdrop-filter: blur(24px) !important;
-}
-progress, [role="progressbar"] {
-  accent-color: var(--nw-cyan);
-}
-progress::-webkit-progress-value { background: linear-gradient(90deg,var(--nw-cyan),var(--nw-violet),var(--nw-pink)); }
-[role="slider"] { color: var(--nw-cyan) !important; }
-[role="dialog"], [data-testid*="popover"], [data-testid*="menu"], [role="menu"], [role="listbox"] {
-  background: rgba(13,19,37,.98) !important;
-  color: var(--nw-text) !important;
-  border: 1px solid rgba(85,243,255,.24) !important;
-  border-radius: 14px !important;
-  box-shadow: 0 18px 60px rgba(0,0,0,.5), 0 0 24px rgba(85,243,255,.08) !important;
-  backdrop-filter: blur(22px) !important;
-}
-[role="menuitem"]:hover, [role="option"]:hover, [data-testid*="menu"] button:hover {
-  background: rgba(85,243,255,.12) !important;
-}
-[data-testid="context-menu"], .encore-dark-theme { --background-base: #0d1325; --text-base: #edf7ff; }
-hr, [role="separator"] { border-color: var(--nw-line) !important; }
-::-webkit-scrollbar { width: 9px; height: 9px; }
-::-webkit-scrollbar-thumb { background: linear-gradient(var(--nw-cyan),var(--nw-violet)); border: 2px solid transparent; background-clip: padding-box; border-radius: 99px; }
-::-webkit-scrollbar-track { background: transparent; }
-::selection { background: rgba(85,243,255,.28); color: white; }
-/* Spotify's Encore tokens — used by newer UI surfaces */
-.encore-dark-theme, .encore-base-set {
-  --background-base: #0a0f20 !important;
-  --background-highlight: #18243d !important;
-  --background-press: #202e4b !important;
-  --background-elevated-base: #111a30 !important;
-  --background-elevated-highlight: #1b2945 !important;
-  --text-base: #edf7ff !important;
-  --text-subdued: #91a2bb !important;
-  --essential-base: #55f3ff !important;
-  --essential-subdued: #9b7bff !important;
-  --decorative-base: #ff4fd8 !important;
-  --border-subdued: rgba(85,243,255,.16) !important;
-}
-@media (max-width: 900px) {
-  [data-testid="left-sidebar"] { border-radius: 12px !important; }
-  [data-testid="card"] { border-radius: 12px !important; }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
+  --ng-text: #f4f5fa;
+  --ng-muted: #a6a9b6;
+  --ng-glass: rgba(24, 26, 36, .58);
+  --ng-glass-strong: rgba(18, 20, 29, .78);
+  --ng-glass-soft: rgba(255, 255, 255, .055);
+  --ng-stroke: rgba(255, 255, 255, .12);
+  --ng-stroke-soft: rgba(255, 255, 255, .075);
+  --ng-shadow: 0 12px 36px rgba(0, 0, 0, .20);
+  --ng-radius: 18px;
 }
 
-
-/* === NEON//WAVE 2077 VISUAL PASS === */
-:root {
-  --nw-bg: #05070d;
-  --nw-panel: rgba(8, 13, 23, .82);
-  --nw-panel-2: rgba(12, 18, 31, .92);
-  --nw-line: rgba(0, 240, 255, .25);
-  --nw-cyan: #00f0ff;
-  --nw-violet: #bd00ff;
-  --nw-pink: #ff2a6d;
-  --nw-text: #f2f7ff;
-  --nw-muted: #8995a8;
-  --nw-glow: 0 0 24px rgba(0,240,255,.2);
+/* The artwork sits behind the entire Spotify app, not inside a content panel. */
+html.ng-glass-on {
+  background: #101116 !important;
 }
-html, body, #main, #main-view, [data-testid="root"] {
-  background: transparent !important;
-}
-html { background: #05070d !important; }
-body {
-  position: relative;
-  isolation: isolate;
-  background: transparent !important;
-}
-#nw-art-backdrop {
-  position: fixed;
-  inset: -34px;
-  z-index: -2;
-  pointer-events: none;
-  background-image: var(--nw-track-art, none);
-  background-size: cover;
-  background-position: center;
-  filter: blur(34px) saturate(1.35) brightness(.24);
-  opacity: .72;
-  transform: scale(1.06);
-  transition: opacity .55s ease, background-image .35s ease;
-}
-#nw-art-backdrop::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(115deg, rgba(2,7,14,.82), rgba(5,5,15,.70) 45%, rgba(15,2,18,.76)),
-    linear-gradient(0deg, #05070d 0%, transparent 38%, rgba(0,240,255,.08) 100%);
-}
-body::after {
+html.ng-glass-on::before {
   content: "";
   position: fixed;
-  inset: 0;
+  inset: -30px;
   z-index: -1;
   pointer-events: none;
-  opacity: .17;
-  background-image: repeating-linear-gradient(0deg, transparent 0 3px, rgba(0,240,255,.10) 4px, transparent 5px);
-  mix-blend-mode: screen;
+  background-image:
+    linear-gradient(180deg, rgba(8, 9, 14, .48), rgba(8, 9, 14, .76)),
+    var(--ng-track-art, radial-gradient(ellipse at 50% 0%, #394052, #11131a 72%));
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(26px) saturate(.78);
+  transform: scale(1.06);
+  opacity: .94;
+  transition: opacity .35s ease;
 }
-[data-testid="left-sidebar"], .Root__nav-bar, nav[aria-label] {
-  background: linear-gradient(155deg, rgba(8,16,27,.94), rgba(9,7,20,.92)) !important;
-  border: 1px solid rgba(0,240,255,.32) !important;
-  border-radius: 5px 17px 5px 17px !important;
-  box-shadow: inset 3px 0 0 rgba(0,240,255,.12), 12px 12px 34px #0008 !important;
-}
-header, [data-testid="topbar"], .main-topBar-container, .Root__top-bar {
-  background: linear-gradient(90deg, rgba(5,10,19,.88), rgba(16,7,24,.78)) !important;
-  border-bottom: 1px solid rgba(255,42,109,.30) !important;
-}
-[data-testid="card"], .Card, [data-testid="playlist-card"], [data-testid="album-card"] {
-  background: linear-gradient(145deg, rgba(12,22,35,.86), rgba(15,8,25,.90)) !important;
-  border: 1px solid rgba(0,240,255,.19) !important;
-  border-radius: 4px 15px 4px 15px !important;
-  clip-path: none;
-}
-[data-testid="card"]:hover, .Card:hover, [data-testid="playlist-card"]:hover, [data-testid="album-card"]:hover {
-  border-color: var(--nw-pink) !important;
-  box-shadow: 0 0 0 1px rgba(255,42,109,.24), 0 0 26px rgba(255,42,109,.14) !important;
-}
-footer, [data-testid="now-playing-bar"], .Root__now-playing-bar {
-  background: linear-gradient(90deg, rgba(4,11,19,.97), rgba(18,6,23,.97)) !important;
-  border-top: 1px solid rgba(0,240,255,.42) !important;
-  box-shadow: 0 -8px 36px #0009, 0 -1px 18px rgba(255,42,109,.10) !important;
-}
-button, [role="button"] { border-radius: 4px 12px 4px 12px; }
-input, textarea, [role="combobox"], [data-testid="search-input"] {
-  border-radius: 4px 14px 4px 14px !important;
-  background: rgba(3,9,17,.88) !important;
-}
-[role="dialog"], [role="menu"], [role="listbox"], [data-testid*="popover"] {
-  border-radius: 5px 16px 5px 16px !important;
-  border-color: rgba(255,42,109,.34) !important;
-}
-[aria-label="Play"], [data-testid="play-button"], .Button--play {
-  background: linear-gradient(135deg, #00f0ff, #bd00ff) !important;
-  box-shadow: 0 0 22px rgba(0,240,255,.35), 0 0 30px rgba(189,0,255,.16) !important;
-}
-a:hover { color: #00f0ff !important; text-shadow: 0 0 12px rgba(0,240,255,.55); }
-@media (prefers-reduced-motion: reduce) {
-  #nw-art-backdrop { transition: none; }
-}
-
-
-/* Performance guardrails: avoid stacking expensive filters and transitions. */
-#neon-wave-dock, [data-testid="left-sidebar"], .Root__nav-bar,
-header, [data-testid="topbar"], .main-topBar-container,
-footer, [data-testid="now-playing-bar"], .Root__now-playing-bar,
-[data-testid="card"], .Card, [data-testid="playlist-card"], [data-testid="album-card"] {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-a, button, [role="button"], [data-testid="control-button"],
-[data-testid="card"], .Card, [data-testid="playlist-card"], [data-testid="album-card"] {
-  transition: color .12s ease, background-color .12s ease, border-color .12s ease !important;
-}
-[data-testid="card"]:hover, .Card:hover, [data-testid="playlist-card"]:hover, [data-testid="album-card"]:hover {
-  transform: none !important;
-}
-
-/* Keep Spotify's outer application shells transparent so the live artwork is visible. */
-.Root, .Root__top-container, .Root__main-view, .main-view-container,
-.main-view-container__scroll-node, [data-testid="main-view"] {
+html.ng-glass-on body,
+html.ng-glass-on #main,
+html.ng-glass-on #main-view,
+html.ng-glass-on [data-testid="root"],
+html.ng-glass-on .Root,
+html.ng-glass-on .Root__top-container,
+html.ng-glass-on .Root__main-view,
+html.ng-glass-on .main-view-container,
+html.ng-glass-on .main-view-container__scroll-node {
   background: transparent !important;
+  color: var(--ng-text) !important;
 }
+
+/* Glass surfaces: restrained transparency, soft edges, no fake layout elements. */
+html.ng-glass-on [data-testid="left-sidebar"],
+html.ng-glass-on .Root__nav-bar,
+html.ng-glass-on nav[aria-label],
+html.ng-glass-on [data-testid="now-playing-bar"],
+html.ng-glass-on .Root__now-playing-bar,
+html.ng-glass-on footer,
+html.ng-glass-on header,
+html.ng-glass-on [data-testid="topbar"],
+html.ng-glass-on .main-topBar-container {
+  background: var(--ng-glass) !important;
+  border: 1px solid var(--ng-stroke-soft) !important;
+  box-shadow: var(--ng-shadow) !important;
+  backdrop-filter: blur(22px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(145%) !important;
+}
+
+html.ng-glass-on [data-testid="left-sidebar"],
+html.ng-glass-on .Root__nav-bar,
+html.ng-glass-on nav[aria-label] {
+  border-radius: var(--ng-radius) !important;
+}
+
+html.ng-glass-on [data-testid="now-playing-bar"],
+html.ng-glass-on .Root__now-playing-bar,
+html.ng-glass-on footer {
+  border-radius: 16px !important;
+  margin: 0 8px 8px !important;
+}
+
+html.ng-glass-on header,
+html.ng-glass-on [data-testid="topbar"],
+html.ng-glass-on .main-topBar-container {
+  border-radius: 16px !important;
+}
+
+/* Cards retain Spotify's own dimensions and grid gaps. */
+html.ng-glass-on [data-testid="card"],
+html.ng-glass-on [data-testid="playlist-card"],
+html.ng-glass-on [data-testid="album-card"],
+html.ng-glass-on .Card {
+  background: rgba(255, 255, 255, .055) !important;
+  border: 1px solid var(--ng-stroke-soft) !important;
+  border-radius: 15px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .12) !important;
+  transition: background-color .16s ease, border-color .16s ease !important;
+}
+html.ng-glass-on [data-testid="card"]:hover,
+html.ng-glass-on [data-testid="playlist-card"]:hover,
+html.ng-glass-on [data-testid="album-card"]:hover,
+html.ng-glass-on .Card:hover {
+  background: rgba(255, 255, 255, .095) !important;
+  border-color: rgba(255, 255, 255, .19) !important;
+}
+
+/* Search and form fields only; playback buttons are deliberately untouched. */
+html.ng-glass-on input,
+html.ng-glass-on textarea,
+html.ng-glass-on [role="combobox"],
+html.ng-glass-on [data-testid="search-input"] {
+  background: rgba(12, 13, 19, .48) !important;
+  color: var(--ng-text) !important;
+  border: 1px solid var(--ng-stroke) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+html.ng-glass-on input:focus,
+html.ng-glass-on textarea:focus,
+html.ng-glass-on [role="combobox"]:focus-within {
+  border-color: rgba(255, 255, 255, .34) !important;
+  outline: none !important;
+}
+
+/* Menus and dialogs use the same glass material. */
+html.ng-glass-on [role="dialog"],
+html.ng-glass-on [role="menu"],
+html.ng-glass-on [role="listbox"],
+html.ng-glass-on [data-testid*="popover"],
+html.ng-glass-on [data-testid*="menu"] {
+  background: rgba(24, 25, 34, .88) !important;
+  color: var(--ng-text) !important;
+  border: 1px solid var(--ng-stroke) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .34) !important;
+  backdrop-filter: blur(24px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(145%) !important;
+}
+html.ng-glass-on [role="menuitem"]:hover,
+html.ng-glass-on [role="option"]:hover {
+  background: rgba(255, 255, 255, .09) !important;
+}
+
+/* Track rows and typography: no global transforms or control restyling. */
+html.ng-glass-on [data-testid="tracklist-row"]:hover,
+html.ng-glass-on [role="row"]:hover {
+  background: rgba(255, 255, 255, .075) !important;
+}
+html.ng-glass-on [data-encore-id="text"] { color: var(--ng-text); }
+html.ng-glass-on a { transition: color .12s ease; }
+html.ng-glass-on a:hover { color: #fff !important; }
+html.ng-glass-on ::selection { background: rgba(255, 255, 255, .22); }
+
+/* Keep all effects cheap on constrained devices. */
+@media (max-width: 800px) {
+  html.ng-glass-on [data-testid="left-sidebar"],
+  html.ng-glass-on .Root__nav-bar,
+  html.ng-glass-on [data-testid="now-playing-bar"],
+  html.ng-glass-on .Root__now-playing-bar {
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.ng-glass-on *, html.ng-glass-on *::before, html.ng-glass-on *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
+
+/* Disabling the theme removes only our background and material overrides. */
+html:not(.ng-glass-on)::before { content: none !important; }
