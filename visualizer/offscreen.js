@@ -4,7 +4,9 @@ let audioContext = null;
 let source = null;
 let analyser = null;
 let raf = 0;
-let activeTabId = null;\nlet lastSendAt = 0;\nlet frequencyData = null;
+let activeTabId = null;
+let lastSendAt = 0;
+let frequencyData = null;
 
 async function stop() {
   if (raf) cancelAnimationFrame(raf);
