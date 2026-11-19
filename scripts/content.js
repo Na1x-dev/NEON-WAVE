@@ -18,9 +18,11 @@
 
   function readArtwork() {
     if (!playerRoot) return "";
-    const image = playerRoot.querySelector(
-      '[data-testid="cover-art-image"], img[alt][src], img[src]'
-    );
+    const image =
+      playerRoot.querySelector('img[data-testid="cover-art-image"]') ||
+      playerRoot.querySelector('[data-testid="cover-art-image"] img') ||
+      playerRoot.querySelector('img[alt][src]') ||
+      playerRoot.querySelector('img[src]');
     if (!image) return "";
     return image.currentSrc || image.src || image.getAttribute("src") || "";
   }
@@ -32,7 +34,7 @@
     lastArtwork = src;
     // Spotify artwork URLs are supplied by Spotify itself; reject non-http sources.
     if (!/^https?:\/\//i.test(src)) return;
-    root.style.setProperty("--ng-track-art", 'url("' + src.replace(/["\\\\\n\r]/g, "") + '")');
+    root.style.setProperty("--ng-track-art", 'url("' + src.replaceAll('"', "") + '")');
   }
 
   function attachPlayerObserver() {
