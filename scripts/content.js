@@ -41,7 +41,7 @@
     const candidate =
       document.querySelector('[data-testid="now-playing-bar"]') ||
       document.querySelector('.Root__now-playing-bar') ||
-      document.querySelector('footer');
+      document.querySelector('.main-nowPlayingBar-container');
     if (!candidate || candidate === playerRoot) return !!candidate;
     if (artworkObserver) artworkObserver.disconnect();
     playerRoot = candidate;
