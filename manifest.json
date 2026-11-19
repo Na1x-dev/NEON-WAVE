@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "NEON//WAVE — Spotify Cyberpunk Theme",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A full neon cyberpunk visual redesign for Spotify Web Player, with an optional live audio spectrum visualizer.",
   "permissions": [
     "tabCapture",
