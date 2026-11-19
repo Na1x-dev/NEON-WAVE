@@ -12,7 +12,7 @@
 
   function setEnabled(enabled) {
     root.classList.toggle("ng-glass-on", enabled);
-    if (!enabled) root.style.removeProperty("--ng-track-art");
+    if (!enabled) { root.style.removeProperty("--ng-track-art"); lastArtwork = ""; }
     else updateArtwork();
   }
 
